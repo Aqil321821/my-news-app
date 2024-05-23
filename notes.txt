@@ -3,3 +3,6 @@
 run compilation command => npm run sass:build
 run watch compilation command => npm run sass:watch
         
+2. node modules 
+  dependencies downloaded in this directory
+  here we get bs.scss and var files etc

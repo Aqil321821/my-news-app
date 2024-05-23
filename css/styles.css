@@ -115,3 +115,33 @@ body > div > div > div > button {
 i:hover {
   color: #c72727;
 }
+
+
+
+/* styling swiper */
+.swiper {
+  width: 100%;
+  height: 60%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #c72727;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#slider1{
+  max-height: 800px;
+  /* max-height:fit-content; */
+}
+

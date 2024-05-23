@@ -25,17 +25,25 @@ document.addEventListener("DOMContentLoaded", function() {
     dateElement.textContent = formattedDate;
 });
 
-//swiper function
-document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.swiper-container', {
-        direction: 'vertical', // Vertical sliding
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-       
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
+
+
+function initSwiper() {
+    const swiper = new Swiper('.swiper', {
+      direction: 'vertical',
+      slidesPerView: 1,
+      spaceBetween: 30,
+      freeMode: true,
+      loop: true,
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: true,
+      },
+  
+      
+  
+      
+
     });
-});
+  }
+
+  initSwiper();
