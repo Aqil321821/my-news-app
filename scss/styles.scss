@@ -1,0 +1,145 @@
+// Our all custom styling will be written here
+// then run a command which will compile this into css and include that css file in our index file
+
+
+/* header styling */
+
+// header{
+//     height: 155px;
+// }
+*{
+    box-sizing: border-box;
+    font-family: 'Noto Serif',sans-serif;
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: rgb(110, 109, 109);
+}
+header img{
+    height: 80px;
+    width: 300px;
+}
+
+.custom-line{
+    border: none; 
+    height: 3px;
+    // background-color: #0A0A0A; 
+    margin: 0; 
+    border: 2px solid #0A0A0A;
+
+}
+#date{
+    font-family: 'Roboto', sans-serif;
+     font-weight: 100;
+}
+
+.line-top{
+    // background-color: aqua;
+    border-top: #0A0A0A solid 3px;
+    border-bottom: 1px solid black;
+    
+}
+.line-top ul a{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+/* styling search form */
+.search-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    // margin-top: 10px;
+  }
+
+#search-term{
+    flex: 6;
+    width: 100%;
+    // height: 50px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    // background: grey;
+    color: #fff;
+    height: 100%;
+    outline: none;
+}
+
+  body > div > div > div > button{
+    flex: 1;
+    display: block;
+    width: 100%;
+    padding: 7px;
+    border-radius: 5px;
+    // height: 50px;
+    cursor: pointer;
+    background: #c72727;
+    color: white;
+    outline: none;
+
+  }
+
+
+//   main container
+.custom-border{
+    border-right: 2px solid grey;
+}
+.news-options{
+    font-size: 12px;
+}
+.custom-border-bottom{
+    border-bottom: 2px solid grey;
+}
+
+// second column small news
+
+
+
+//controlling font sixe and weight
+#second-column\ small-news > div > div > div > a > div > div:nth-child(2) > p{
+    font-size: 13px !important;
+    font-family: 'Noto Serif';
+    margin-left: 10px;
+    font-weight: 700 !important;
+    max-width: 250px !important;
+    color: #0A0A0A !important;
+    line-height: 18px;
+
+}
+#small-pic\ text-center > img{
+    object-fit: cover;
+    // object-fit: contain;
+    // object-fit: fill;
+}
+
+
+//change container size 
+@media(min-width:1200px){
+ .container{
+    max-width: 1250px;
+ }
+}
+
+
+.smallnews1{
+    border-bottom: 1px solid grey !important;
+    margin-bottom: 4px !important;
+}
+
+.smallnews2{
+    border-bottom: 1px solid grey !important;
+    margin-bottom: 1px !important;
+
+}
+i:hover{
+    color: #c72727;
+     
+}
+
+
+

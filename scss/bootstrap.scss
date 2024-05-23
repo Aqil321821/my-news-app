@@ -1,0 +1,13 @@
+//all over ride of bootstrap variable are to be written here 
+
+$card-spacer-y:  0px;
+$card-spacer-x:    0px;
+.row > * {
+    
+
+    padding-left: 0 !important;
+
+  }
+
+
+@import  '../node_modules/bootstrap/scss/bootstrap.scss';
