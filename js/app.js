@@ -1,3 +1,38 @@
+// make a global object
+
+const global={
+  currentPage: window.location.pathname,
+}
+
+
+
+
+
+function init(){
+    switch (global.currentPage) {
+        case '/':
+        case '/index.html':
+        console.log('home');
+         break;
+    
+    
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -30,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function() {
 function initSwiper() {
     const swiper = new Swiper('.swiper', {
       direction: 'vertical',
-      slidesPerView: 1,
-      spaceBetween: 30,
+      slidesPerView: 'auto',
+      spaceBetween: 0,
       freeMode: true,
       loop: true,
       autoplay: {
@@ -46,4 +81,24 @@ function initSwiper() {
     });
   }
 
-  initSwiper();
+  // initSwiper();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // all event listener
+
+  document.addEventListener('DOMContentLoaded',init)

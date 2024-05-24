@@ -32,6 +32,10 @@ header img {
   border-top: #0A0A0A solid 3px;
   border-bottom: 1px solid black;
 }
+.line-bottom{
+  border-bottom: 2px solid black;
+  width: 100%;
+}
 
 .line-top ul a {
   font-family: "Roboto", sans-serif;
@@ -59,7 +63,7 @@ header img {
   outline: none;
 }
 
-body > div > div > div > button {
+body > div.container.line-top.py-2 > div > form > div > button{
   flex: 1;
   display: block;
   width: 100%;
@@ -121,17 +125,22 @@ i:hover {
 /* styling swiper */
 .swiper {
   width: 100%;
-  height: 60%;
+  height: 100%;
+  height: 500px;
+  height: 700px;
+  height: 1000px;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #c72727;
+  /* background: #c72727; */
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
   align-items: center;
+  min-height: 500px;
+  /* margin-bottom: 10px !important; */
 }
 
 .swiper-slide img {
@@ -140,8 +149,24 @@ i:hover {
   height: 100%;
   object-fit: cover;
 }
+.swiper-content{
+   height: 300px;
+}
 #slider1{
   max-height: 800px;
   /* max-height:fit-content; */
 }
 
+
+
+
+
+
+
+
+/* buisness page */
+.heading-underline{
+  display: inline-block; 
+  border-bottom: 5px solid #000; 
+  padding-bottom: 5px;
+}
