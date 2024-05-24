@@ -2,9 +2,51 @@
 
 const global={
   currentPage: window.location.pathname,
+  api:{
+    API_URL: 'https://newsapi.org/v2/',
+    API_KEY: '3029b7a3f4014c23a88c9c0dc26efe2f',
+  },
 }
 
 
+
+
+
+//fetch api data function
+//sample request
+//GET https://newsapi.org/v2/everything?q=Pakistan&apiKey=YOUR_API_KEY
+
+
+
+async function fetchAPIData(endpoint){
+  const API_URL=global.api.API_URL;
+  const API_KEY=global.api.API_KEY;
+
+  const response= await fetch(`${API_URL}${endpoint}&apiKey=${API_KEY}`);
+
+
+
+}
+
+
+//highlight active link
+
+function highlightActiveLink() {
+
+
+  const navBar= document.querySelector('.nav-bar');
+  const links= navBar.querySelectorAll('.nav-link');
+  links.forEach(link=>{
+    if (link.getAttribute('href')===global.currentPage) {
+          link.classList.add('active');
+    }
+  })
+  
+   
+
+
+
+};
 
 
 
@@ -14,9 +56,28 @@ function init(){
         case '/index.html':
         console.log('home');
          break;
+        case '/article.html':
+        console.log('article');
+         break;
+        case '/buisness.html':
+        console.log('buisness');
+         break;
+        case '/paknews.html':
+        console.log('paknews');
+         break;
+        case '/sportsnews.html':
+        console.log('sports');
+         break;
+        case '/worldnews.html':
+        console.log('world');
+         break;
+        case '/search.html':
+        console.log('search');
+         break;
     
     
     }
+    highlightActiveLink();
 }
 
 

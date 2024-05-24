@@ -170,3 +170,16 @@ i:hover {
   border-bottom: 5px solid #000; 
   padding-bottom: 5px;
 }
+
+
+/* active class for link */
+.active{
+  color: #c72727 !important;
+  font-weight: bolder !important;
+}
+
+/* hover on nav links */
+
+.nav-bar a:hover{
+  color: #c72727 !important;
+}
