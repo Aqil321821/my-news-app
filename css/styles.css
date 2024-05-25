@@ -194,3 +194,41 @@ i:hover {
   margin-bottom: 20px;
   border-radius: 5px;
 }
+
+
+
+
+/* pagination */
+.pagination {
+  margin-top: 20px;
+}
+
+.page-counter {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.my-btn:hover {
+  background: var(--color-secondary);
+  color: #000;
+}
+
+.my-btn:disabled {
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.my-btn:disabled:hover {
+  background: transparent;
+  color: #fff;
+}
+.my-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid  #c72727;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  background: #c72727;
+  transition: all 0.3s ease-in-out;
+  margin-left: 10px;
+}
