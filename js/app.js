@@ -1,12 +1,12 @@
 // make a global object
 
-const global={
+const global = {
   currentPage: window.location.pathname,
-  api:{
+  api: {
     API_URL: 'https://newsapi.org/v2/',
     API_KEY: '3029b7a3f4014c23a88c9c0dc26efe2f',
   },
-}
+};
 
 
 
@@ -18,31 +18,253 @@ const global={
 
 
 
-async function fetchAPIData(endpoint){
-  const API_URL=global.api.API_URL;
-  const API_KEY=global.api.API_KEY;
 
-  const response= await fetch(`${API_URL}${endpoint}&apiKey=${API_KEY}`);
+
+
+
+
+
+
+//for indexpage make request
+async function getUSNews() {
+
+  const { articles } = await fetchAPIData('top-headlines?country=us');
+  const filteredArticles = articles.filter(articles => articles.content !== '[Removed]' || articles.content !==null);
+  console.log(filteredArticles);
+  filteredArticles.forEach(article => {
+    console.log(typeof article.content);
+    const div = document.createElement('div');
+    div.classList.add('col-3');
+    div.innerHTML = `
+            
+         <div class="card mb-3 border-0 mt-2">
+         <h5 class="card-title p-2 fw-bold mt-2">${article.title}</h5>
+         <div class="card-body">
+             <a href="${article.url}" target="_blank">
+              ${article.urlToImage
+        ? `<img src="${article.urlToImage}" class="card-img-top object-fit-cover">` : `<img src="../img/no-image.png" class="card-img-top object-fit-cover">`
+      }
+           ${typeof article.content === "object" ?
+        `<p class="card-text mt-2">Please Click to Read more...</p>` : `<p class="card-text mt-2">${article.content.slice(0, 75)} ...Read more</p>`
+      } 
+           <div class="card-text d-flex news-options">
+             <p class="card-text me-2 pe-2 custom-border"><small class="text-muted">By : ${article.source.name}</small></p>
+             <p class="card-text "><small class="text-muted">${article.publishedAt.slice(0, 9)}</small></p>
+           </div>
+         
+         </div>
+     </a>
+       </div>
+         
+         `;
+    document.querySelector('.row').appendChild(div);
+
+  });
+
+}
+
+//display bbc news 
+async function getBBCNews() {
+
+  const { articles } = await fetchAPIData('top-headlines?sources=bbc-news');
+  const filteredArticles = articles.filter(articles => articles.content !== '[Removed]');
+  console.log(filteredArticles);
+filteredArticles.forEach(article => {
+   console.log(typeof article.content);
+    const div = document.createElement('div');
+    div.classList.add('col-3');
+    div.innerHTML = `
+            
+         <div class="card mb-3 border-0 mt-2">
+         <h5 class="card-title p-2 fw-bold mt-2">${article.title}</h5>
+         <div class="card-body">
+             <a href="${article.url}" target="_blank">
+              ${article.urlToImage
+                ?`<img src="${article.urlToImage}" class="card-img-top object-fit-cover">`:`<img src="../img/no-image.png" class="card-img-top object-fit-cover">`
+              }
+           ${typeof article.content === "object"?
+            `<p class="card-text mt-2">Please Click to Read more...</p>`:`<p class="card-text mt-2">${article.content.slice(0,75)} ...Read more</p>`
+           } 
+           <div class="card-text d-flex news-options">
+             <p class="card-text me-2 pe-2 custom-border"><small class="text-muted">By : ${article.source.name}</small></p>
+             <p class="card-text "><small class="text-muted">${article.publishedAt.slice(0, 9)}</small></p>
+           </div>
+         
+         </div>
+     </a>
+       </div>
+         
+         `;
+    document.querySelector('.row').appendChild(div);
+  
+      }); 
+
+}
+
+//get buisness news
+//top-headlines?country=us&category=business
+async function getBuisnessNews() {
+
+  const { articles } = await fetchAPIData('top-headlines?country=us&category=business');
+  const filteredArticles = articles.filter(articles => articles.content !== '[Removed]' || articles.content ===null);
+  console.log(filteredArticles);
+filteredArticles.forEach(article => {
+   console.log(typeof article.content);
+    const div = document.createElement('div');
+    div.classList.add('col-3');
+    div.innerHTML = `
+            
+         <div class="card mb-3 border-0 mt-2">
+         <h5 class="card-title p-2 fw-bold mt-2">${article.title}</h5>
+         <div class="card-body">
+             <a href="${article.url}" target="_blank">
+              ${article.urlToImage
+                ?`<img src="${article.urlToImage}" class="card-img-top object-fit-cover">`:`<img src="../img/no-image.png" class="card-img-top object-fit-cover">`
+              }
+           ${typeof article.content === "object"?
+            `<p class="card-text mt-2">Please Click to Read more...</p>`:`<p class="card-text mt-2">${article.content.slice(0,75)} ...Read more</p>`
+           } 
+           <div class="card-text d-flex news-options">
+             <p class="card-text me-2 pe-2 custom-border"><small class="text-muted">By : ${article.source.name}</small></p>
+             <p class="card-text "><small class="text-muted">${article.publishedAt.slice(0, 9)}</small></p>
+           </div>
+         
+         </div>
+     </a>
+       </div>
+         
+         `;
+    document.querySelector('.row').appendChild(div);
+  
+      }); 
+
+}
+
+//get tech news
+//top-headlines?country=us&category=technology
+async function getTechNews() {
+
+  const { articles } = await fetchAPIData('top-headlines?country=us&category=technology');
+  const filteredArticles = articles.filter(articles => articles.content !== '[Removed]' || articles.content ===null);
+     console.log(filteredArticles);
+     filteredArticles.forEach(article => {
+     console.log(typeof article.content);
+    const div = document.createElement('div');
+    div.classList.add('col-3');
+    div.innerHTML = `
+            
+         <div class="card mb-3 border-0 mt-2">
+         <h5 class="card-title p-2 fw-bold mt-2">${article.title}</h5>
+         <div class="card-body">
+             <a href="${article.url}" target="_blank">
+              ${article.urlToImage
+                ?`<img src="${article.urlToImage}" class="card-img-top object-fit-cover">`:`<img src="../img/no-image.png" class="card-img-top object-fit-cover" width="50px" height='150px'>`
+              }
+           ${typeof article.content === "object"?
+            `<p class="card-text mt-2">Please Click to Read more...</p>`:`<p class="card-text mt-2">${article.content.slice(0,75)} ...Read more</p>`
+           } 
+           <div class="card-text d-flex news-options">
+             <p class="card-text me-2 pe-2 custom-border"><small class="text-muted">By : ${article.source.name}</small></p>
+             <p class="card-text "><small class="text-muted">${article.publishedAt.slice(0, 9)}</small></p>
+           </div>
+         
+         </div>
+     </a>
+       </div>
+         
+         `;
+    document.querySelector('.row').appendChild(div);
+  
+      }); 
+
+}
+
+//get sports news 
+
+async function getSportsNews() {
+
+  const { articles } = await fetchAPIData('top-headlines?country=us&category=sports');
+  const filteredArticles = articles.filter(articles => articles.content !== '[Removed]' || articles.content ===null);
+     console.log(filteredArticles);
+     filteredArticles.forEach(article => {
+     console.log(typeof article.content);
+    const div = document.createElement('div');
+    div.classList.add('col-3');
+    div.innerHTML = `
+            
+         <div class="card mb-3 border-0 mt-2">
+         <h5 class="card-title p-2 fw-bold mt-2">${article.title}</h5>
+         <div class="card-body">
+             <a href="${article.url}" target="_blank">
+              ${article.urlToImage
+                ?`<img src="${article.urlToImage}" class="card-img-top object-fit-cover">`:`<img src="../img/no-image.png" class="card-img-top object-fit-cover" width="50px" height='170px'>`
+              }
+           ${typeof article.content === "object"?
+            `<p class="card-text mt-2">Please Click to Read more...</p>`:`<p class="card-text mt-2">${article.content.slice(0,75)} ...Read more</p>`
+           } 
+           <div class="card-text d-flex news-options">
+             <p class="card-text me-2 pe-2 custom-border"><small class="text-muted">By : ${article.source.name}</small></p>
+             <p class="card-text "><small class="text-muted">${article.publishedAt.slice(0, 9)}</small></p>
+           </div>
+         
+         </div>
+     </a>
+       </div>
+         
+         `;
+    document.querySelector('.row').appendChild(div);
+  
+      }); 
+
+}
+
+
+
+
+
+
+
+//a function which takes endpoint and get the results in json formate
+
+async function fetchAPIData(endpoint) {
+  const API_URL = global.api.API_URL;
+  const API_KEY = global.api.API_KEY;
+
+  showSpinner();
+  const response = await fetch(`${API_URL}${endpoint}&apiKey=${API_KEY}`);
+
+  const data = response.json();
+  hideSpinner();
+  return data;
 
 
 
 }
 
 
+//show and hide spinner
+//we will call them where ever we call fetch();
+function showSpinner() {
+  document.querySelector('.spinner').classList.add("show");
+}
+function hideSpinner() {
+  document.querySelector('.spinner').classList.remove("show");
+}
+
 //highlight active link
 
 function highlightActiveLink() {
 
 
-  const navBar= document.querySelector('.nav-bar');
-  const links= navBar.querySelectorAll('.nav-link');
-  links.forEach(link=>{
-    if (link.getAttribute('href')===global.currentPage) {
-          link.classList.add('active');
+  const navBar = document.querySelector('.nav-bar');
+  const links = navBar.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    if (link.getAttribute('href') === global.currentPage) {
+      link.classList.add('active');
     }
-  })
-  
-   
+  });
+
+
 
 
 
@@ -50,34 +272,39 @@ function highlightActiveLink() {
 
 
 
-function init(){
-    switch (global.currentPage) {
-        case '/':
-        case '/index.html':
-        console.log('home');
-         break;
-        case '/article.html':
-        console.log('article');
-         break;
-        case '/buisness.html':
-        console.log('buisness');
-         break;
-        case '/paknews.html':
-        console.log('paknews');
-         break;
-        case '/sportsnews.html':
-        console.log('sports');
-         break;
-        case '/worldnews.html':
-        console.log('world');
-         break;
-        case '/search.html':
-        console.log('search');
-         break;
-    
-    
-    }
-    highlightActiveLink();
+function init() {
+  switch (global.currentPage) {
+    case '/':
+    case '/index.html':
+      console.log('home');
+      getUSNews();
+      break;
+    case '/article-details.html':
+      console.log('article');
+      break;
+    case '/buisness.html':
+      console.log('buisness');
+      getBuisnessNews();
+      break;
+    case '/bbcnews.html':
+      getBBCNews();
+      console.log('bbcnews');
+      break;
+    case '/sportsnews.html':
+      getSportsNews();
+      console.log('sports');
+      break;
+    case '/technews.html':
+      getTechNews();
+      console.log('world');
+      break;
+    case '/search.html':
+      console.log('search');
+      break;
+
+
+  }
+  highlightActiveLink();
 }
 
 
@@ -113,53 +340,16 @@ function init(){
 
 
 //set the date dynamic 
-document.addEventListener("DOMContentLoaded", function() {
-    var dateElement = document.getElementById('date'); 
-    var currentDate = new Date(); 
-    var options = { year: 'numeric', month: 'long', day: 'numeric' }; 
-    var formattedDate = currentDate.toLocaleDateString('en-US', options); 
-    dateElement.textContent = formattedDate;
+document.addEventListener("DOMContentLoaded", function () {
+  var dateElement = document.getElementById('date');
+  var currentDate = new Date();
+  var options = { year: 'numeric', month: 'long', day: 'numeric' };
+  var formattedDate = currentDate.toLocaleDateString('en-US', options);
+  dateElement.textContent = formattedDate;
 });
 
 
-
-function initSwiper() {
-    const swiper = new Swiper('.swiper', {
-      direction: 'vertical',
-      slidesPerView: 'auto',
-      spaceBetween: 0,
-      freeMode: true,
-      loop: true,
-      autoplay: {
-        delay: 2000,
-        disableOnInteraction: true,
-      },
-  
-      
-  
-      
-
-    });
-  }
-
-  // initSwiper();
+//init app
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // all event listener
-
-  document.addEventListener('DOMContentLoaded',init)
+document.addEventListener('DOMContentLoaded',init);
