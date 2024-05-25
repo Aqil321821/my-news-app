@@ -58,7 +58,8 @@ header img {
   margin-right: 10px;
   border: 1px solid grey;
   border-radius: 5px;
-  color: #fff;
+  /* color: #fff; */
+  color: #000;
   height: 100%;
   outline: none;
 }
@@ -182,4 +183,14 @@ i:hover {
 
 .nav-bar a:hover{
   color: #c72727 !important;
+}
+
+
+
+/* alert box */
+.alert {
+  background: red;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
